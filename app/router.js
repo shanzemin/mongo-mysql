@@ -9,4 +9,5 @@ module.exports = app => {
   router.get('/api/login/test', controller.login.index);
   router.get('/api/users', controller.user.index);
   router.post('/api/users', controller.user.create);
+  router.post('/login', app.passport.authenticate('local'));
 };

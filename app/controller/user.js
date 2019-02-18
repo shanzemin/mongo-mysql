@@ -13,6 +13,12 @@ class userController extends Controller {
     const body = ctx.request.body;
     ctx.body = await ctx.service.user.create(body);
   }
+
+  async findOne() {
+    const { ctx } = this;
+    const body = ctx.request.body;
+    ctx.body = await ctx.service.user.findOne(body);
+  }
 }
 
 module.exports = userController;

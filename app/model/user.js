@@ -7,6 +7,8 @@ module.exports = app => {
     password: String,
     sex: String,
     address: String,
+  }, {
+    timestamps: {},
   });
   return mongoose.model('User', UserSchema);
 };

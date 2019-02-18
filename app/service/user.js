@@ -12,6 +12,11 @@ class userService extends Service {
     const { ctx } = this;
     return await ctx.model.User.create(body);
   }
+
+  async findOne(params) {
+    const { ctx } = this;
+    return await ctx.model.User.findOne(params);
+  }
 }
 
 module.exports = userService;
