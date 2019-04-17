@@ -1,38 +1,32 @@
-'use strict';
+'use strict'
 
-const LocalStrategy = require('passport-local').Strategy;
-const Util = require('./libs/util');
-const config = require('./config/index');
+class AppBootHook {
+  constructor (app) {
+    this.app = app
+  }
 
-module.exports = app => {
-  // 挂载 strategy
-  app.passport.use(new LocalStrategy({
-    passReqToCallback: true,
-  }, (req, username, password, done) => {
-    // format user
-    const user = {
-      provider: 'local',
-      username,
-      password,
-    };
-    app.passport.doVerify(req, user, done);
-  }));
+  configWillLoad () {
 
-  app.passport.verify(async (ctx, user) => {
-    const u = await ctx.service.user.findOne({ username: user.username, password: user.password });
-    if (u) {
-      const token = await Util.signToken(u._id);
-      const json = { token, expiresIn: config.expiresIn };
-      return json;
+  }
+
+  async didLoad () {
+    // 请将你的插件项目中 app.beforeStart 中的代码置于此处。
+  }
+
+  async willReady () {
+    // 请将你的应用项目中 app.beforeStart 中的代码置于此处。
+    if (this.app.config.env === 'local' || this.app.config.env === 'unittest') {
+      await this.app.model.sync()
     }
-    return false;
-  });
+  }
 
-  // app.passport.serializeUser(async (ctx, user) => {
-  //   console.log('11111', user);
-  // });
+  async didReady () {
+    // require('./config/seed')(this.app)
+  }
 
-  // app.passport.deserializeUser(async (ctx, user) => {
-  //   console.log('22222', user);
-  // });
-};
+  async serverDidReady () {
+
+  }
+}
+
+module.exports = AppBootHook

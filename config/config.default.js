@@ -11,25 +11,35 @@ module.exports = appInfo => {
 
   config.cluster = {
     listen: {
-      port: 7002,
+      port: 9399,
       hostname: '0.0.0.0',
     },
   };
-
-  config.mongoose = {
-    client: {
-      url: 'mongodb://localhost/egg_db',
-      options: {
-        useNewUrlParser: true,
-      },
-    },
+  
+  // config.baseDir = 'app/model/mongoose'
+  
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username: 'root',
+    password: '123456',
+    database: 'egg_db',
+    baseDir: 'app/model/mysql'
   };
+  
+  // config.mongoose = {
+  //   client: {
+  //     url: 'mongodb://localhost/egg_db',
+  //     options: {
+  //       useNewUrlParser: true,
+  //     }
+  //   },
+  //   baseDir: 'app/model/mongoose'
+  // };
 
   config.security = {
-    csrf: {
-      enable: false,
-    },
-    domainWhiteList: [ 'http://192.168.11.234' ],
+    csrf: false
   };
 
   return config;

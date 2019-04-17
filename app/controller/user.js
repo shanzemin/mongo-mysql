@@ -19,6 +19,13 @@ class userController extends Controller {
     const body = ctx.request.body;
     ctx.body = await ctx.service.user.findOne(body);
   }
+
+  async logout() {
+    const { ctx } = this;
+    ctx.logout();
+    ctx.body = 'ok';
+  }
+
 }
 
 module.exports = userController;

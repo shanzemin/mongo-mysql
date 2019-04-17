@@ -1,0 +1,47 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "egg_db",
+    "host": "127.0.0.1",
+    "dialectOptions": {
+      "charset": "utf8mb4"
+    },
+    "define": {
+      "freezeTableName": false,
+      "underscored": true,
+      "version": true
+    },
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "123456",
+    "database": "egg_db_unittest",
+    "host": "127.0.0.1",
+    "dialectOptions": {
+      "charset": "utf8mb4"
+    },
+    "define": {
+      "freezeTableName": false,
+      "underscored": true,
+      "version": true
+    },
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "123456",
+    "database": "egg_db",
+    "host": "127.0.0.1",
+    "dialectOptions": {
+      "charset": "utf8mb4"
+    },
+    "define": {
+      "freezeTableName": false,
+      "underscored": true,
+      "version": true
+    },
+    "dialect": "mysql"
+  }
+}

@@ -5,6 +5,7 @@ const Service = require('egg').Service;
 class userService extends Service {
   async index() {
     const { ctx } = this;
+    console.log(ctx.model.User)
     return await ctx.model.User.find();
   }
 
