@@ -16,7 +16,7 @@ module.exports = appInfo => {
     },
   };
   
-  // config.baseDir = 'app/model/mongoose'
+  // config.delegate = 'app/model/mongoose'
   
   config.sequelize = {
     dialect: 'mysql',
@@ -25,18 +25,18 @@ module.exports = appInfo => {
     username: 'root',
     password: '123456',
     database: 'egg_db',
-    baseDir: 'app/model/mysql'
+    baseDir: 'mysql',
+    delegate: 'modelMysql'
   };
   
-  // config.mongoose = {
-  //   client: {
-  //     url: 'mongodb://localhost/egg_db',
-  //     options: {
-  //       useNewUrlParser: true,
-  //     }
-  //   },
-  //   baseDir: 'app/model/mongoose'
-  // };
+  config.mongoose = {
+    client: {
+      url: 'mongodb://localhost/egg_db',
+      options: {
+        useNewUrlParser: true,
+      }
+    }
+  };
 
   config.security = {
     csrf: false

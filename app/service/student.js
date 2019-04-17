@@ -4,13 +4,13 @@ const Service = require('egg').Service;
 
 class studentService extends Service {
   async index() {
-    const { ctx } = this;
-    return await ctx.model.Student.find();
+    const { ctx, app } = this;
+    return await app.modelMysql.Student.find();
   }
 
   async create(body) {
-    const { ctx } = this;
-    return await ctx.model.Student.create(body);
+    const { ctx, app } = this;
+    return await app.modelMysql.Student.create(body);
   }
 }
 
