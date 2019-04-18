@@ -1,5 +1,7 @@
 'use strict'
 
+const path = require('path')
+
 class AppBootHook {
   constructor (app) {
     this.app = app
@@ -10,7 +12,18 @@ class AppBootHook {
   }
 
   async didLoad () {
-    // 请将你的插件项目中 app.beforeStart 中的代码置于此处。
+    // const mongod = this.app.loader.getLoadUnits().map(unit => path.join(unit.path, 'app/mongod'));
+    // console.log(mongod)
+    // this.app.loader.loadToContext(mongod, 'modelMongo', {});
+    const dir = path.join(this.app.config.baseDir, 'app/mongo');
+    const pro = this.app.mongoose.Model;
+    this.app.loader.loadToApp(dir, 'mongo', {
+      inject: this.app,
+      caseStyle: 'upper',
+      filter(model) {
+        return typeof model === 'function' && model.prototype instanceof pro;
+      },
+    });
   }
 
   async willReady () {

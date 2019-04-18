@@ -25,17 +25,18 @@ module.exports = appInfo => {
     username: 'root',
     password: '123456',
     database: 'egg_db',
-    baseDir: 'mysql',
-    delegate: 'modelMysql'
+    // baseDir: 'mysql',
+    // delegate: 'modelMysql'
   };
   
   config.mongoose = {
     client: {
       url: 'mongodb://localhost/egg_db',
       options: {
-        useNewUrlParser: true,
+        useNewUrlParser: true
       }
-    }
+    },
+    loadModel: false
   };
 
   config.security = {
