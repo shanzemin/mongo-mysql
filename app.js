@@ -12,9 +12,6 @@ class AppBootHook {
   }
 
   async didLoad () {
-    // const mongod = this.app.loader.getLoadUnits().map(unit => path.join(unit.path, 'app/mongod'));
-    // console.log(mongod)
-    // this.app.loader.loadToContext(mongod, 'modelMongo', {});
     const dir = path.join(this.app.config.baseDir, 'app/mongo');
     const pro = this.app.mongoose.Model;
     this.app.loader.loadToApp(dir, 'mongo', {
