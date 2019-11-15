@@ -43,5 +43,12 @@ module.exports = appInfo => {
     csrf: false
   };
 
+  config.view  = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.nj': 'nunjucks'
+    }
+  };
+
   return config;
 };
