@@ -2,6 +2,7 @@
 
 const cheerio = require('cheerio');
 const fs = require('fs');
+const path = require('path');
 
 const Controller = require('egg').Controller;
 
@@ -12,7 +13,7 @@ class HomeController extends Controller {
     let result = await ctx.curl(url, { method: 'GET', contentType: 'json', dataType: 'text', encoding: null })
     let $ = cheerio.load(result.data)
     let data = $('div.newpicsmall_list').text()
-    fs.writeFileSync('/home/shanzm/workspace/egg-example/tmp/officialAccounts.txt', data)
+    fs.writeFileSync(`${path.resolve(__dirname, '../../')}/tmp/officialAccounts.txt`, data)
     ctx.response.body = 'ok'
   }
 }
